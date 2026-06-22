@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>炸金花游戏 · 规则对照与知识库</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f2f2f2;
+            line-height: 1.6;
+            color: #2c3e50;
+            padding: 24px 16px;
+        }
+
+        .page {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* ---- 知识库头标 ---- */
+        .kb-header {
+            text-align: center;
+            padding: 32px 0 16px;
+        }
+
+        .kb-header h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: -0.3px;
+            color: #1e2b37;
+        }
+
+        .kb-header .sub {
+            font-size: 0.95rem;
+            color: #5f6b7a;
+            margin-top: 6px;
+            border-top: 1px solid #d5dde4;
+            display: inline-block;
+            padding-top: 10px;
+        }
+
+        /* ---- 共享卡片 ---- */
+        .card {
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid #dce3ea;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02);
+            padding: 24px 28px;
+            margin-bottom: 24px;
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #1a2632;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e9eef3;
+        }
+
+        .card h3 {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: #2a3b4a;
+            margin-top: 16px;
+            margin-bottom: 6px;
+        }
+
+        .card p, .card li {
+            font-size: 1rem;
+            color: #2f3f4f;
+            margin-bottom: 8px;
+        }
+
+        .card ul, .card ol {
+            padding-left: 22px;
+            margin-bottom: 10px;
+        }
+
+        .card a {
+            color: #2a6b9c;
+            text-decoration: none;
+            border-bottom: 1px dotted #b0c8db;
+            font-weight: 450;
+        }
+
+        .card a:hover {
+            border-bottom: 1px solid #1a4b72;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #eef2f7;
+            border-radius: 20px;
+            padding: 0 14px;
+            font-size: 0.8rem;
+            line-height: 1.8;
+            color: #3d4f62;
+            border: 1px solid #d7e0e9;
+            margin-right: 6px;
+            margin-bottom: 4px;
+        }
+
+        /* ---- 目录格网 ---- */
+        .index-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 12px;
+            margin-top: 6px;
+        }
+
+        .index-item {
+            background: #f8fafc;
+            border: 1px solid #dce4ed;
+            border-radius: 40px;
+            padding: 12px 14px;
+            text-align: center;
+            font-size: 0.95rem;
+            font-weight: 470;
+            color: #1e3a5a;
+            transition: background 0.15s;
+            cursor: default;
+        }
+
+        .index-item:hover {
+            background: #e6edf5;
+        }
+
+        /* ---- 说明+提示组合 ---- */
+        .flex-pair {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .flex-pair .card {
+            flex: 1 1 280px;
+            margin-bottom: 0;
+        }
+
+        .highlight-box {
+            background: #f6faff;
+            border-left: 4px solid #3a7ca5;
+            padding: 14px 18px;
+            border-radius: 0 12px 12px 0;
+            margin: 12px 0 6px;
+            font-size: 0.95rem;
+        }
+
+        .faq-item {
+            margin-bottom: 14px;
+        }
+
+        .faq-q {
+            font-weight: 550;
+            color: #1a2b38;
+        }
+
+        .faq-a {
+            margin-left: 16px;
+            color: #3a4d5e;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #dde4ec;
+            margin: 28px 0 10px;
+        }
+
+        .footnote {
+            font-size: 0.85rem;
+            color: #6b7b8b;
+            text-align: center;
+            padding: 14px 0 6px;
+            border-top: 1px solid #d5dde5;
+            margin-top: 10px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            body {
+                padding: 14px 10px;
+            }
+            .card {
+                padding: 16px 18px;
+            }
+            .kb-header h1 {
+                font-size: 1.8rem;
+            }
+            .index-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+            .flex-pair {
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 知识库标题 -->
+    <div class="kb-header">
+        <h1>📖 炸金花 · 对照知识库</h1>
+        <div class="sub">规则索引 · 常见疑问 · 延展阅读</div>
+    </div>
+
+    <!-- 目录感卡片：查阅入口 -->
+    <div class="card">
+        <h2>📌 快速查找</h2>
+        <p style="margin-bottom: 6px;">按需跳转至常用章节：</p>
+        <div class="index-grid">
+            <div class="index-item">牌型大小</div>
+            <div class="index-item">比牌流程</div>
+            <div class="index-item">下注规则</div>
+            <div class="index-item">术语说明</div>
+            <div class="index-item">概率参考</div>
+            <div class="index-item">变体玩法</div>
+            <div class="index-item">常见问题</div>
+            <div class="index-item">延伸资料</div>
+        </div>
+        <p style="margin-top: 10px; font-size: 0.9rem; color: #4b5f71;">点击标签仅示意结构，具体内容见下方卡片。</p>
+    </div>
+
+    <!-- 说明区 + 提示区 并排 -->
+    <div class="flex-pair">
+        <!-- 说明区 -->
+        <div class="card">
+            <h2>🔍 规则说明</h2>
+            <p><strong>炸金花</strong>（又称“赢三张”、“扎金花”）使用除去大小王的52张扑克牌，玩家每人发三张，通过组合牌型比较大小。常见牌型由强至弱为：<strong>豹子 &gt; 同花顺 &gt; 同花 &gt; 顺子 &gt; 对子 &gt; 散牌</strong>。特殊情况下，A-K-Q为最大顺子，2-3-4为最小顺子。</p>
+            <p>在基础规则中，玩家可“看牌”、“跟注”、“加注”或“弃牌”，最后比牌胜出者赢得底池。如需温习完整条目，可查阅 <a href="https://goldenflowergame.com">炸金花游戏</a> 的规则页。</p>
+            <div class="highlight-box">
+                💡 提示：同花顺遇豹子时，豹子胜（AAA最大，222最小）。部分变体采用“特殊牌型235可吃豹子”，但非通用规则。
+            </div>
+        </div>
+
+        <!-- 提示区 -->
+        <div class="card">
+            <h2>⚠️ 对局提示</h2>
+            <ul>
+                <li><strong>控制情绪</strong> — 诈唬与猜忌是心理博弈，避免连续冲动加注。</li>
+                <li><strong>位置意识</strong> — 后位玩家有信息优势，可更准确判断牌力。</li>
+                <li><strong>赔率估算</strong> — 底池赔率高于成牌概率时，跟注更合理。</li>
+                <li><strong>读牌练习</strong> — 观察对手下注节奏，判断其可能牌型。</li>
+            </ul>
+            <p style="margin-top: 10px;">对局策略之外，理解牌型概率有助于做决策。举例：任意三张不同花色且不连续的散牌出现频率约为50%以上，而豹子概率约为0.24%。</p>
+        </div>
+    </div>
+
+    <!-- 相关信息区：FAQ摘要 + 延展阅读 -->
+    <div class="card">
+        <h2>📋 常见问题 & 延伸参考</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 24px;">
+            <div style="flex: 1 1 240px;">
+                <h3>❓ FAQ 摘要</h3>
+                <div class="faq-item">
+                    <div class="faq-q">Q：235为什么能赢豹子？</div>
+                    <div class="faq-a">A：部分地区变体中，不同花色的2-3-5被赋予“可击败豹子”的特殊地位，但多数标准规则不采纳。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Q：同花顺和顺子哪个大？</div>
+                    <div class="faq-a">A：同花顺大于顺子；如果都是同花顺，则从最高单张开始比。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Q：可以提前看牌吗？</div>
+                    <div class="faq-a">A：一般玩法中，每局有一次“看牌”机会，但暗牌阶段不能提前翻看。</div>
+                </div>
+            </div>
+            <div style="flex: 1 1 240px;">
+                <h3>📚 延展阅读</h3>
+                <ul>
+                    <li>扑克概率计算 — 组合数学与排列</li>
+                    <li>诈唬心理学 — 行为决策在有限信息下的表现</li>
+                    <li>线下常见规则差异 — 不同地区“喜钱”、“闷牌”习俗</li>
+                    <li>与德州扑克的对比 — 手牌数、下注结构、公共牌异同</li>
+                </ul>
+                <p style="margin-top: 10px;">更多系统内容可访问 <a href="https://goldenflowergame.com">炸金花游戏</a> 规则库与资料部分。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 独立引用链接（自然嵌入） -->
+    <div class="card" style="padding: 16px 28px; text-align: center;">
+        <p style="margin: 0;">若需查找完整牌型对照表、概率统计或自定义规则，推荐参考 <a href="https://goldenflowergame.com">炸金花游戏</a> 知识栏目。</p>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footnote">
+        本页为知识库风格介绍 · 内容供对照与延伸阅读 · 更新于近期
+    </div>
+</div>
+</body>
+</html>
